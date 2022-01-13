@@ -22,16 +22,9 @@ public class Class {
     public int hoursPerWeek(String name){
         List<String> lines = readFile();
         int sum = 0;
-        List<String> teacherWithHour = new ArrayList<>();
-
-        for (int i = 0; i < lines.size(); i = i+4){
-            teacherWithHour.add(lines.get(i).concat(",").concat(lines.get(i+3)));
-        }
-
-        for (String s: teacherWithHour){
-            String[] temp = s.split(",");
-            if (temp[0].equals(name)){
-                sum = sum + Integer.parseInt(temp[1]);
+        for (int i = 0; i<lines.size(); i = i+4){
+            if (lines.get(i).equals(name)){
+                sum += Integer.parseInt(lines.get(i+3));
             }
         }
         return sum;
